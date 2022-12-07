@@ -2,12 +2,13 @@ const Koa = require('koa');
 const config = require('config');
 const bodyParser = require('koa-bodyparser');
 const Router = require('@koa/router');
-const { getLogger, initializeLogger } = require('./core/logging')
+const activityService = require('./service/activity');
+const { getLogger, initializeLogger } = require('./core/logging');
 
 // Initializing configs
 const NODE_ENV = config.get('env');
 const LOG_LEVEL = config.get('log.level');
-const LOG_DISABLED = config.get('log.disabled')
+const LOG_DISABLED = config.get('log.disabled');
 
 // Initializing Koa
 const app = new Koa();
@@ -17,8 +18,13 @@ const logger = getLogger();
 const router = new Router();
 
 // Defining routes
-router.get('/api/activies', async (ctx) => {
+router.get('/api/activities', async (ctx) => {
+  logger.info(JSON.stringify(ctx.request));
+		ctx.body = activityService.getAll();
+})
 
+router.post('/api/activities', async (ctx) => {
+  activityService.create();
 })
 
 app
