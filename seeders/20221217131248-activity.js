@@ -7,8 +7,9 @@ module.exports = {
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, m.",
         place: "lokaal klj",
-        StartTime: "2021-07-01T12:32:04.534Z",
-        EndTime: "2021-07-01T12:32:04.534Z",
+        Date: "2021-07-01",
+        StartTime: "00:00:00",
+        EndTime: "00:00:00",
       },
     ]);
   },
