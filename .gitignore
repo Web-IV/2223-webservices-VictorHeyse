@@ -125,5 +125,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# seeders
-./config/config.JSON
+# config for seeds
+/config/config.JSON
