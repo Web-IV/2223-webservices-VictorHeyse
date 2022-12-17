@@ -126,4 +126,4 @@ dist
 .pnp.*
 
 # config for seeds
-/config/config.JSON
+config/config.JSON
