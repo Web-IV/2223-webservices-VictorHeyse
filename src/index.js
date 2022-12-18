@@ -4,8 +4,7 @@ const config = require("config");
 const bodyParser = require("koa-bodyparser");
 const Router = require("@koa/router");
 const activityService = require("./service/activity");
-const { getLogger, initializeLogger } = require("./core/logging");
-const { initializeData } = require("./data");
+const { getLogger } = require("./core/logging");
 
 // Initializing configs
 const NODE_ENV = config.get("env");
@@ -17,6 +16,17 @@ const LOG_DISABLED = config.get("log.disabled");
 async function main() {
   // Initializing Koa
   const app = new Koa();
+
+  // Initializing database
+  const db = require("../src/data");
+  try {
+    await db.authenticate();
+    console.log(
+      "info: Connection with database has been established successfully."
+    );
+  } catch (error) {
+    console.error("info: Unable to connect to the database:", error);
+  }
 
   // Defining CORS
   app.use(
@@ -36,16 +46,13 @@ async function main() {
   // Initializing Logger
   const logger = getLogger();
 
-  // Initializing Connectie Database
-  await initializeData();
-
   // Initializing Router
   const router = new Router();
 
   // Defining routes
   router.get("/api/activities", async (ctx) => {
     logger.info(JSON.stringify(ctx.request));
-    ctx.body = activityService.getAll();
+    ctx.body = await activityService.getAll();
   });
 
   router.post("/api/activities", async (ctx) => {
