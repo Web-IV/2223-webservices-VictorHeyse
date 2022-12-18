@@ -51,12 +51,27 @@ async function main() {
 
   // Defining routes
   router.get("/api/activities", async (ctx) => {
-    logger.info(JSON.stringify(ctx.request));
     ctx.body = await activityService.getAll();
   });
 
+  router.get("/api/activities:id", async (ctx) => {
+    ctx.body = await activityService.getById(ctx.params.id);
+  });
+
+  router.put("/api/activities", async (ctx) => {
+    ctx.body = await activityService.updateById(ctx.params.id, ...ctx.params);
+  });
+
+  router.delete("/api/activities:id", async (ctx) => {
+    ctx.body = await activityService.deleteById(ctx.params.id);
+  });
+
+  // post does NOT work at this build (bug)
   router.post("/api/activities", async (ctx) => {
-    activityService.create();
+    let activity = ctx.request.body;
+    activity = await activityService.create();
+    // ctx.response.code = 200;
+    ctx.body = activity;
   });
 
   app.use(router.routes()).use(router.allowedMethods());
