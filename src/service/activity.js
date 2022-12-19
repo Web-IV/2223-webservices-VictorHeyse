@@ -25,7 +25,7 @@ const getById = async (identifier) => {
 
 const create = async (data) => {
   debugLog(`Creating new activity ${JSON.stringify(data)}`);
-  const identifier = 8;
+  const identifier = Date.now();
 
   Activity.create({
     id: identifier,

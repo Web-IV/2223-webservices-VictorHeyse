@@ -17,7 +17,6 @@ const getActivityById = async (ctx) => {
 };
 
 const updateActivity = async (ctx) => {
-  console.log(ctx);
   ctx.body = await activityService.updateById(ctx.params.id, {
     ...ctx.request.body,
   });
