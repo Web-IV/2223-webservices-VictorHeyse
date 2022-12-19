@@ -2,7 +2,7 @@ const Router = require("@koa/router");
 const activityService = require("../service/activity");
 
 const getAllActivities = async (ctx) => {
-  ctx.body = activityService.getAll();
+  ctx.body = await activityService.getAll();
 };
 
 const createActivity = async (ctx) => {
@@ -29,7 +29,7 @@ const deleteActivity = async (ctx) => {
 
 module.exports = (app) => {
   const router = new Router({
-    prefix: "/transactions",
+    prefix: "/activities",
   });
 
   router.get("/", getAllActivities);

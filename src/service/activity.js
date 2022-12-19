@@ -7,7 +7,7 @@ const debugLog = (message, meta = {}) => {
 };
 
 const getAll = async () => {
-  debugLog("Fetching all transactions");
+  debugLog("Fetching all activities");
   return await Activity.findAll({
     raw: true,
   });
