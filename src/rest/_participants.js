@@ -1,4 +1,5 @@
 const Router = require("@koa/router");
+const Joi = require("joi");
 const participantService = require("../service/participant");
 
 const getAllParticipants = async (ctx) => {

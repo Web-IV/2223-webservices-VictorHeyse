@@ -13,14 +13,19 @@ const getAll = async () => {
   });
 };
 
-const getById = async (userId) => {
-  debugLog(`Fetching activity with id ${userId}`);
-  return await Activity.findAll({
+const getById = async (id) => {
+  debugLog(`Fetching activity with id ${id}`);
+  const activity = await Activity.findAll({
     where: {
-      userId: userId,
+      id: id,
     },
     raw: true,
   });
+
+  if (!activity) {
+    throw ServiceError.notFound(`There is no activity with id ${id}`);
+  }
+  return activity;
 };
 
 const create = async (data) => {
