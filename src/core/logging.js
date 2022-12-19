@@ -27,12 +27,17 @@ module.exports.initializeLogger = ({
   extraTransports = [],
 }) => {
   logger = winston.createLogger({
-    level,
+    levels: {
+      error: 0,
+      debug: 1,
+      info: 2,
+    },
     defaultMeta,
     format: loggerFormat(),
     transports: [
       new winston.transports.Console({
         silent: disabled,
+        level: level,
       }),
       ...extraTransports,
     ],

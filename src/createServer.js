@@ -20,15 +20,17 @@ module.exports = async function createServer() {
     },
   });
 
+  const logger = getLogger();
+
   const db = require("./data");
 
   try {
     await db.authenticate();
-    console.log(
+    logger.info(
       "info: Connection with database has been established successfully."
     );
   } catch (error) {
-    console.error("info: Unable to connect to the database:", error);
+    logger.info("info: Unable to connect to the database:", error);
   }
 
   const app = new Koa();
@@ -46,8 +48,6 @@ module.exports = async function createServer() {
       maxAge: CORS_MAX_AGE,
     })
   );
-
-  const logger = getLogger();
 
   app.use(bodyParser());
 

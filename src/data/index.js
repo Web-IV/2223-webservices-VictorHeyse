@@ -1,5 +1,6 @@
 const { Sequelize } = require("sequelize");
 const config = require("config");
+const { getLogger } = require("../core/logging");
 
 const DATABASE = config.get("db");
 const USERNAME = config.get("user");
@@ -12,4 +13,8 @@ module.exports = new Sequelize(DATABASE, USERNAME, PASSWORD, {
   host: HOST,
   dialect: DIALECT,
   port: PORT,
+  logging: function (str) {
+    const logger = getLogger();
+    logger.debug(str);
+  },
 });
