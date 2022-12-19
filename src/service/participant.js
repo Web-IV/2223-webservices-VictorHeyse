@@ -25,7 +25,9 @@ const getById = async (recordId) => {
   });
 
   if (!record || record.length === 0) {
-    throw ServiceError.notFound(`There is no activity with id ${recordId}`);
+    throw ServiceError.notFound(
+      `There is no participant with recordId ${recordId}`
+    );
   }
   return record;
 };
