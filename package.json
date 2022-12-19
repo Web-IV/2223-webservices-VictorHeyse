@@ -8,6 +8,8 @@
   },
   "scripts": {
     "start": "npx env-cmd nodemon src/index.js",
+    "seeders": "npx sequelize db:seed:all",
+    "delseeders": "npx sequelize-cli db:seed:undo:all",
     "test": "jest",
     "test:coverage": "yarn test --coverage"
   },

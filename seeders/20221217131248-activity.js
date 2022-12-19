@@ -37,6 +37,3 @@ module.exports = {
     return queryInterface.bulkDelete("Activities", null, {});
   },
 };
-
-// running all seeds (npx sequelize-cli db:seed:all)
-// deleting all seeds (npx sequelize-cli db:seed:undo:all)
