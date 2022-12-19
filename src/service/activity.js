@@ -23,27 +23,36 @@ const getById = async (identifier) => {
   });
 };
 
-const create = (data) => {
-  debugLog("Creating new activity", newActivity);
-  console.log(data);
-  // Activity.create(data);
+const create = async (data) => {
+  debugLog(`Creating new activity ${JSON.stringify(data)}`);
+  const identifier = 8;
+
+  Activity.create({
+    id: identifier,
+    name: data.name,
+    description: data.description,
+    place: data.place,
+    date: data.date,
+    startTime: data.startTime,
+    endTime: data.endTime,
+  });
 };
 
-const updateById = (identifier, data) => {
-  debugLog(`Updating activity with id ${identifier}`);
+const updateById = async (identifier, data) => {
+  debugLog(`Updating activity with id ${identifier} ${JSON.stringify(data)}`);
   Activity.upsert({
     id: identifier,
     name: data.name,
     description: data.description,
     place: data.place,
-    Date: data.date,
-    StartTime: data.StartTime,
-    EndTime: data.EndTime,
+    date: data.date,
+    startTime: data.startTime,
+    endTime: data.endTime,
   });
 };
 
 const deleteById = (identifier) => {
-  debugLog(`Deleting activities with id ${identifier}`);
+  debugLog(`Deleting activity with id ${identifier}`);
   Activity.destroy({ where: { id: identifier } });
 };
 
