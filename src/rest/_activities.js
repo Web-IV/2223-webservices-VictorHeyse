@@ -6,18 +6,19 @@ const getAllActivities = async (ctx) => {
 };
 
 const createActivity = async (ctx) => {
-  const newActivity = activityService.create({
+  const newActivity = await activityService.create({
     ...ctx.request.body,
   });
   ctx.body = newActivity;
 };
 
 const getActivityById = async (ctx) => {
-  ctx.body = activityService.getById(ctx.params.id);
+  ctx.body = await activityService.getById(ctx.params.id);
 };
 
 const updateActivity = async (ctx) => {
-  ctx.body = activityService.updateById(ctx.params.id, {
+  console.log(ctx);
+  ctx.body = await activityService.updateById(ctx.params.id, {
     ...ctx.request.body,
   });
 };
