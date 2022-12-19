@@ -1,4 +1,6 @@
 const Participant = require("../../models/participant");
+const ServiceError = require("../core/serviceError");
+const { v4: uuidv4 } = require("uuid");
 const { getLogger } = require("../core/logging");
 
 const debugLog = (message, meta = {}) => {
@@ -13,32 +15,51 @@ const getAll = async () => {
   });
 };
 
-const getById = async (userId) => {
-  debugLog(`Fetching participant with userId ${userId}`);
-  return await Participant.findAll({
+const getById = async (recordId) => {
+  debugLog(`Fetching participant ${recordId}`);
+  const record = await Participant.findAll({
     where: {
-      userId: userId,
+      recordId: recordId,
     },
     raw: true,
   });
+
+  if (!record || record.length === 0) {
+    throw ServiceError.notFound(`There is no activity with id ${recordId}`);
+  }
+  return record;
 };
 
 const create = async (data) => {
   debugLog(`Creating new participant ${data.userId} ${JSON.stringify(data)}`);
+  const recordId = uuidv4();
   Participant.create({
-    id: data.id,
+    activityId: data.activityId,
     userId: data.userId,
+    recordId: recordId,
   });
 };
 
-const deleteById = (userId) => {
-  debugLog(`Deleting participant with userId ${userId}`);
-  Participant.destroy({ where: { userId: userId } });
+const deleteById = (recordId) => {
+  debugLog(`Deleting participant with recordId ${recordId}`);
+  Participant.destroy({ where: { recordId: recordId } });
+};
+
+const updateById = async (recordId, data) => {
+  debugLog(
+    `Updating participant with recordId ${recordId} ${JSON.stringify(data)}`
+  );
+  Participant.upsert({
+    recordId: recordId,
+    userId: data.userId,
+    activityId: data.activityId,
+  });
 };
 
 module.exports = {
   getAll,
   getById,
   create,
+  updateById,
   deleteById,
 };

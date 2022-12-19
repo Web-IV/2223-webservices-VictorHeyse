@@ -26,6 +26,8 @@
     "node-emoji": "^1.11.0",
     "sequelize": "^6.27.0",
     "sequelize-cli": "^6.5.2",
+    "serialize-error": "^8.1.0",
+    "uuidv4": "^6.2.13",
     "winston": "^3.8.2"
   },
   "devDependencies": {

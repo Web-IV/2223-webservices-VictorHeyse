@@ -2,7 +2,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert("Activities", [
       {
-        id: 16714,
+        id: "c52bde46-9594-4a37-b9b3-01af8cd29f71",
         name: "Pretparkactiviteit",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, m.",
@@ -12,7 +12,7 @@ module.exports = {
         EndTime: "00:00:00",
       },
       {
-        id: 16715,
+        id: "c52bde46-9594-4a37-b9b3-01af8cd29f72",
         name: "Test 2",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, m.",
@@ -22,7 +22,7 @@ module.exports = {
         EndTime: "00:00:00",
       },
       {
-        id: 16716,
+        id: "c52bde46-9594-4a37-b9b3-01af8cd29f73",
         name: "Test 3",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, m.",

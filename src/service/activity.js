@@ -1,4 +1,6 @@
 const Activity = require("../../models/activity");
+const ServiceError = require("../core/serviceError");
+const { v4: uuidv4 } = require("uuid");
 const { getLogger } = require("../core/logging");
 
 const debugLog = (message, meta = {}) => {
@@ -22,7 +24,7 @@ const getById = async (id) => {
     raw: true,
   });
 
-  if (!activity) {
+  if (!activity || activity.length === 0) {
     throw ServiceError.notFound(`There is no activity with id ${id}`);
   }
   return activity;
@@ -30,7 +32,7 @@ const getById = async (id) => {
 
 const create = async (data) => {
   debugLog(`Creating new activity ${JSON.stringify(data)}`);
-  const identifier = Date.now();
+  const identifier = uuidv4();
 
   Activity.create({
     id: identifier,

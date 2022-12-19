@@ -3,14 +3,18 @@ module.exports = {
     await queryInterface.createTable(
       "Participants",
       {
-        id: {
-          type: Sequelize.BIGINT,
+        activityId: {
+          type: Sequelize.CHAR(36),
           allowNull: false,
-          primaryKey: true,
         },
         userId: {
           type: Sequelize.INTEGER,
           allowNull: false,
+        },
+        recordId: {
+          type: Sequelize.CHAR(36),
+          allowNull: false,
+          primaryKey: true,
         },
       },
       {

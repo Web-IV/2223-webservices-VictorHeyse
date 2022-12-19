@@ -36,7 +36,7 @@ const getActivityById = async (ctx) => {
 
 getActivityById.validationScheme = {
   params: Joi.object({
-    id: Joi.number().integer().positive(),
+    id: Joi.string().uuid(),
   }),
 };
 
@@ -48,10 +48,9 @@ const updateActivity = async (ctx) => {
 
 updateActivity.validationScheme = {
   params: {
-    id: Joi.number().integer().positive(),
+    id: Joi.string().uuid(),
   },
   body: {
-    id: Joi.number().invalid(0),
     name: Joi.string(),
     description: Joi.string(),
     place: Joi.string(),
@@ -66,7 +65,7 @@ const deleteActivity = async (ctx) => {
 
 deleteActivity.validationScheme = {
   params: {
-    id: Joi.number().integer().positive(),
+    id: Joi.string().uuid(),
   },
 };
 

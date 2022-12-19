@@ -4,14 +4,18 @@ const db = require("../src/data/index");
 const Participant = db.define(
   "Participant",
   {
-    id: {
-      type: DataTypes.BIGINT,
+    activityId: {
+      type: DataTypes.UUIDV4,
       allowNull: false,
-      primaryKey: true,
     },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    recordId: {
+      type: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
     },
   },
   {
