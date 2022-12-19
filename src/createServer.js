@@ -1,10 +1,9 @@
 const Koa = require("koa");
-const koaCors = require("@koa/cors");
 const config = require("config");
+const koaCors = require("@koa/cors");
 const bodyParser = require("koa-bodyparser");
-const Router = require("@koa/router");
-const activityService = require("./src/service/activity");
-const { getLogger } = require("./src/core/logging");
+const { getLogger, initializeLogger } = require("./core/logging");
+const installRest = require("./rest");
 
 const NODE_ENV = config.get("env");
 const CORS_ORIGINS = config.get("cors.origins");
@@ -13,7 +12,16 @@ const LOG_LEVEL = config.get("log.level");
 const LOG_DISABLED = config.get("log.disabled");
 
 module.exports = async function createServer() {
-  const db = require("./src/data");
+  initializeLogger({
+    level: LOG_LEVEL,
+    disabled: LOG_DISABLED,
+    defaultMeta: {
+      NODE_ENV,
+    },
+  });
+
+  const db = require("./data");
+
   try {
     await db.authenticate();
     console.log(
@@ -41,35 +49,10 @@ module.exports = async function createServer() {
 
   const logger = getLogger();
 
-  const router = new Router();
-
-  router.get("/api/activities", async (ctx) => {
-    ctx.body = await activityService.getAll();
-  });
-
-  router.get("/api/activities:id", async (ctx) => {
-    ctx.body = await activityService.getById(ctx.params.id);
-  });
-
-  router.put("/api/activities", async (ctx) => {
-    ctx.body = await activityService.updateById(ctx.params.id, ...ctx.params);
-  });
-
-  router.delete("/api/activities:id", async (ctx) => {
-    ctx.body = await activityService.deleteById(ctx.params.id);
-  });
-
-  // post does NOT work at this build (bug)
-  router.post("/api/activities", async (ctx) => {
-    let activity = ctx.request.body;
-    activity = await activityService.create();
-    // ctx.response.code = 200;
-    ctx.body = activity;
-  });
-
-  app.use(router.routes()).use(router.allowedMethods());
-
   app.use(bodyParser());
+
+  logger.info("Setting up routes");
+  installRest(app);
 
   return {
     getApp() {

@@ -1,11 +1,11 @@
 module.exports = {
-	log: {
-		level: 'development',
-		disabled: false,
-	},
+  log: {
+    level: "info",
+    disabled: false,
+  },
 
-	cors: {
-		origins: ['http://localhost:3000'],
-		maxAge: 3 * 60 *60,
-	},
+  cors: {
+    origins: ["http://localhost:3000"],
+    maxAge: 3 * 60 * 60,
+  },
 };
