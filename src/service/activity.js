@@ -1,4 +1,4 @@
-const Activity = require("../../models/Activity");
+const Activity = require("../../models/activity");
 const { getLogger } = require("../core/logging");
 
 const debugLog = (message, meta = {}) => {
@@ -13,11 +13,11 @@ const getAll = async () => {
   });
 };
 
-const getById = async (identifier) => {
-  debugLog(`Fetching activity with id ${identifier}`);
+const getById = async (userId) => {
+  debugLog(`Fetching activity with id ${userId}`);
   return await Activity.findAll({
     where: {
-      id: identifier,
+      userId: userId,
     },
     raw: true,
   });

@@ -5,7 +5,7 @@ const Activity = db.define(
   "Activity",
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
       primaryKey: true,
     },

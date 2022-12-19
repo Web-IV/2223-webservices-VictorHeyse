@@ -7,9 +7,10 @@
     ]
   },
   "scripts": {
-    "start": "npx env-cmd nodemon src/index.js",
+    "start": "npx sequelize-cli db:migrate && npx sequelize db:seed:all && npx env-cmd nodemon src/index.js",
     "seeders": "npx sequelize db:seed:all",
     "delseeders": "npx sequelize-cli db:seed:undo:all",
+    "migrations": "npx sequelize-cli db:migrate",
     "test": "jest",
     "test:coverage": "yarn test --coverage"
   },
