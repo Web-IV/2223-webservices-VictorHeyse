@@ -1,5 +1,7 @@
 const Participant = require("../../models/participant");
 const ServiceError = require("../core/serviceError");
+const userService = require("../service/user");
+const { addUserInfo } = require("../core/auth");
 const { v4: uuidv4 } = require("uuid");
 const { getLogger } = require("../core/logging");
 
@@ -33,11 +35,24 @@ const getById = async (recordId) => {
 };
 
 const create = async (data) => {
-  debugLog(`Creating new participant ${data.userId} ${JSON.stringify(data)}`);
+  debugLog(`Creating new participant ${JSON.stringify(data)}`);
   const recordId = uuidv4();
+  let userId = 0;
+
+  try {
+    const user = await userService.getByAuth0Id(data.state.user.sub);
+    userId = user.id;
+  } catch (err) {
+    await addUserInfo(data);
+    userId = await userService.register({
+      name: data.state.user.name,
+      auth0id: data.state.user.sub,
+    });
+  }
+
   Participant.create({
     activityId: data.activityId,
-    userId: data.userId,
+    userId: userId,
     recordId: recordId,
   });
 };

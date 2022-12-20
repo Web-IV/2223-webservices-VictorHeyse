@@ -1,6 +1,7 @@
 const Router = require("@koa/router");
 const Joi = require("joi");
 const validate = require("./_validation");
+const { hasPermission, permissions } = require("../core/auth");
 const activityService = require("../service/activity");
 
 const getAllActivities = async (ctx) => {
@@ -76,18 +77,31 @@ module.exports = (app) => {
 
   router.get(
     "/",
+    hasPermission(permissions.readActivities),
     validate(getAllActivities.validationScheme),
     getAllActivities
   );
-  router.post("/", validate(createActivity.validationScheme), createActivity);
+  router.post(
+    "/",
+    hasPermission(permissions.writeActivities),
+    validate(createActivity.validationScheme),
+    createActivity
+  );
   router.get(
     "/:id",
+    hasPermission(permissions.readActivities),
     validate(getActivityById.validationScheme),
     getActivityById
   );
-  router.put("/:id", validate(updateActivity.validationScheme), updateActivity);
+  router.put(
+    "/:id",
+    hasPermission(permissions.writeActivities),
+    validate(updateActivity.validationScheme),
+    updateActivity
+  );
   router.delete(
     "/:id",
+    hasPermission(permissions.writeActivities),
     validate(deleteActivity.validationScheme),
     deleteActivity
   );

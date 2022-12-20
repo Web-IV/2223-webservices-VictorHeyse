@@ -7,6 +7,7 @@ const { serializeError } = require("serialize-error");
 const ServiceError = require("./core/serviceError");
 const { getLogger, initializeLogger } = require("./core/logging");
 const installRest = require("./rest");
+const { checkJwtToken } = require("./core/auth");
 
 const NODE_ENV = config.get("env");
 const CORS_ORIGINS = config.get("cors.origins");
@@ -52,7 +53,18 @@ module.exports = async function createServer() {
     })
   );
 
+  app.use(checkJwtToken());
+
   app.use(bodyParser());
+
+  // // testing Auth0
+  // app.use(async (ctx, next) => {
+  //   const logger = getLogger();
+  //   logger.debug(ctx.headers.authorization);
+  //   logger.debug(JSON.stringify(ctx.state.user));
+  //   logger.debug(ctx.state.jwtOriginalError);
+  //   await next();
+  // });
 
   app.use(async (ctx, next) => {
     const logger = getLogger();
@@ -120,6 +132,15 @@ module.exports = async function createServer() {
         if (error.isForbidden) {
           statusCode = 403;
         }
+      }
+
+      if (ctx.state.jwtOriginalError) {
+        statusCode = 401;
+        errorBody.code = "UNAUTHORIZED";
+        errorBody.message = ctx.state.jwtOriginalError.message;
+        errorBody.details.jwtOriginalError = serializeError(
+          ctx.state.jwtOriginalError
+        );
       }
 
       ctx.status = statusCode;
