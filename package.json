@@ -11,7 +11,7 @@
     "seeders": "npx sequelize db:seed:all",
     "delseeders": "npx sequelize-cli db:seed:undo:all",
     "migrations": "npx sequelize-cli db:migrate",
-    "test": "jest",
+    "test": "npx env-cmd -f .env.test jest",
     "test:coverage": "yarn test --coverage"
   },
   "dependencies": {
