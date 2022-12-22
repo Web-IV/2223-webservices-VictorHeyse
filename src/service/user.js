@@ -1,6 +1,5 @@
 const User = require("../../models/user");
 const ServiceError = require("../core/serviceError");
-// const { v4: uuidv4 } = require("uuid");
 const { getLogger } = require("../core/logging");
 
 const debugLog = (message, meta = {}) => {
@@ -32,19 +31,12 @@ const getById = async (id) => {
 
 const register = async (data) => {
   debugLog(`Creating new User ${data.name} ${JSON.stringify(data)}`);
-  User.create({
+  const newUser = await User.create({
     name: data.name,
     auth0id: data.auth0id,
   });
 
-  const id = await User.findAll({
-    where: {
-      name: data.name,
-    },
-    raw: true,
-  });
-
-  return id;
+  return newUser;
 };
 
 const deleteById = (id) => {
@@ -62,12 +54,15 @@ const updateById = async (id, data) => {
 };
 
 const getByAuth0Id = async (auth0id) => {
-  return await User.findAll({
+  const user = await User.findAll({
+    attributes: ["id"],
     where: {
       auth0id: auth0id,
     },
     raw: true,
   });
+
+  return user;
 };
 
 module.exports = {

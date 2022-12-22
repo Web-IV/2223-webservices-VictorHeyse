@@ -34,32 +34,87 @@ const getById = async (recordId) => {
   return record;
 };
 
-const create = async (data) => {
-  debugLog(`Creating new participant ${JSON.stringify(data)}`);
+const create = async (ctx) => {
+  debugLog(`Creating new participant ${JSON.stringify(ctx.request.body)}`);
   const recordId = uuidv4();
   let userId = 0;
 
   try {
-    const user = await userService.getByAuth0Id(data.state.user.sub);
-    userId = user.id;
+    const user = await userService.getByAuth0Id(ctx.state.user.sub);
+    const obj = JSON.parse(JSON.stringify(user[0]));
+    userId = obj.id;
   } catch (err) {
-    await addUserInfo(data);
-    userId = await userService.register({
-      name: data.state.user.name,
-      auth0id: data.state.user.sub,
+    await addUserInfo(ctx);
+    const user = await userService.register({
+      name: ctx.state.user.name,
+      auth0id: ctx.state.user.sub,
+    });
+    const object = JSON.parse(JSON.stringify(user));
+    userId = object.id;
+  }
+
+  // check if participant doesn't already exist
+  const participant = await Participant.findAll({
+    where: {
+      activityId: ctx.request.body.activityId,
+      userId: userId,
+    },
+    raw: true,
+  });
+
+  let participantExists = false;
+
+  try {
+    const destruc = JSON.parse(JSON.stringify(participant[0]));
+    if (typeof destruc.userId === "undefined") {
+      throw new Error();
+    }
+    participantExists = true;
+  } catch (err) {
+    Participant.create({
+      activityId: ctx.request.body.activityId,
+      userId: userId,
+      recordId: recordId,
     });
   }
 
-  Participant.create({
-    activityId: data.activityId,
-    userId: userId,
-    recordId: recordId,
-  });
+  if (participantExists) {
+    throw ServiceError.validationFailed(
+      `Je bent al ingeschreven voor deze activiteit`
+    );
+  }
 };
 
-const deleteById = (recordId) => {
-  debugLog(`Deleting participant with recordId ${recordId}`);
-  Participant.destroy({ where: { recordId: recordId } });
+const deleteById = async (ctx) => {
+  debugLog(
+    `Deleting participant with activityId ${JSON.stringify(ctx.params.id)}`
+  );
+  let userId = 0;
+
+  try {
+    const user = await userService.getByAuth0Id(ctx.state.user.sub);
+    const obj = JSON.parse(JSON.stringify(user[0]));
+    userId = obj.id;
+  } catch (err) {}
+
+  // check if participant exists
+  const participant = await Participant.findAll({
+    where: {
+      activityId: ctx.params.id,
+      userId: userId,
+    },
+    raw: true,
+  });
+  try {
+    const destruc = JSON.parse(JSON.stringify(participant[0]));
+    if (typeof destruc.userId !== "undefined") {
+      Participant.destroy({
+        where: { activityId: ctx.params.id, userId: userId },
+      });
+    } else {
+      throw new Error();
+    }
+  } catch (err) {}
 };
 
 const updateById = async (recordId, data) => {

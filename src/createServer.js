@@ -57,7 +57,7 @@ module.exports = async function createServer() {
 
   app.use(bodyParser());
 
-  // // testing Auth0
+  // testing Auth0
   // app.use(async (ctx, next) => {
   //   const logger = getLogger();
   //   logger.debug(ctx.headers.authorization);

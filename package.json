@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "npx sequelize-cli db:migrate && npx sequelize db:seed:all && npx env-cmd nodemon src/index.js",
+    "dev": "npx env-cmd nodemon src/index.js",
     "seeders": "npx sequelize db:seed:all",
     "delseeders": "npx sequelize-cli db:seed:undo:all",
     "migrations": "npx sequelize-cli db:migrate",

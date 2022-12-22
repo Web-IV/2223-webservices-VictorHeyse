@@ -16,16 +16,14 @@ getAllParticipants.validationScheme = {
 };
 
 const createParticipant = async (ctx) => {
-  const newParticipant = await participantService.create({
-    ...ctx.request.body,
-  });
+  const newParticipant = await participantService.create(ctx);
   ctx.body = newParticipant;
+  ctx.status = 201;
 };
 
 createParticipant.validationScheme = {
   body: {
     activityId: Joi.string().uuid(),
-    userId: Joi.string().uuid(),
   },
 };
 
@@ -56,7 +54,7 @@ updateParticipant.validationScheme = {
 };
 
 const deleteParticipant = async (ctx) => {
-  participantService.deleteById(ctx.params.id);
+  participantService.deleteById(ctx);
   ctx.status = 204;
 };
 
