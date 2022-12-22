@@ -68,10 +68,8 @@ const permissions = Object.freeze({
   loggedIn: "loggedIn",
   read: "read",
   write: "write",
-  readActivities: "readActivities",
   readParticipants: "readParticipants",
   writeActivities: "writeActivities",
-  writeParticipants: "writeParticipants",
   writeAll: "writeAll",
   readAll: "readAll",
 });

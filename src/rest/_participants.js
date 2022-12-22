@@ -77,13 +77,11 @@ module.exports = (app) => {
   );
   router.post(
     "/",
-    hasPermission(permissions.writeParticipants),
     validate(createParticipant.validationScheme),
     createParticipant
   );
   router.put(
     "/:id",
-    hasPermission(permissions.writeParticipants),
     validate(updateParticipant.validationScheme),
     updateParticipant
   );
@@ -95,7 +93,6 @@ module.exports = (app) => {
   );
   router.delete(
     "/:id",
-    hasPermission(permissions.writeParticipants),
     validate(deleteParticipant.validationScheme),
     deleteParticipant
   );

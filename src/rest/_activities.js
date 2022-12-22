@@ -77,7 +77,6 @@ module.exports = (app) => {
 
   router.get(
     "/",
-    hasPermission(permissions.readActivities),
     validate(getAllActivities.validationScheme),
     getAllActivities
   );
@@ -89,7 +88,6 @@ module.exports = (app) => {
   );
   router.get(
     "/:id",
-    hasPermission(permissions.readActivities),
     validate(getActivityById.validationScheme),
     getActivityById
   );
