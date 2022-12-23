@@ -75,6 +75,14 @@ om terug van niks te beginnen: in database -> drop schema in database -> maak sc
 
 ## Testen
 
+.env.test aanmaken in root met volgende info
+
+    NODE_ENV=test
+    DATABASE_HOST="localhost"
+    DATABASE_PORT=3306
+    DATABASE_USERNAME="root"
+    DATABASE_PASSWORD=""
+
 database informatie aanpassen in config/test.js
 
     user: "root",
