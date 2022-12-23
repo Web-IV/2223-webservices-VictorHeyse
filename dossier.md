@@ -2,10 +2,10 @@
 
 - [x] Front-end Web Development
   - [GitHub repository](https://github.com/Web-IV/2223-frontendweb-victorheyse)
-  - [Online versie](github.com/HOGENT-Web)
+  - [Online versie](https://two223-frontendweb-victorheyse.onrender.com/)
 - [x] Web Services: GITHUB URL
   - [GitHub repository](https://github.com/Web-IV/2223-webservices-VictorHeyse)
-  - [Online versie](github.com/HOGENT-Web)
+  - [Online versie](https://two223-webservices-victorheyse.onrender.com)
 
 **Logingegevens**
 
