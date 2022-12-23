@@ -149,7 +149,7 @@ module.exports = async function createServer() {
 
     start() {
       return new Promise((resolve) => {
-        const port = config.get("serverport");
+        const port = config.get("port");
         app.listen(port);
         logger.info(`🚀 Server listening on http://localhost:${port}`);
         resolve();

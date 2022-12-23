@@ -7,7 +7,7 @@ const USERNAME = config.get("user");
 const PASSWORD = config.get("pswrd");
 const HOST = config.get("host");
 const DIALECT = config.get("dialect");
-const PORT = config.get("port");
+const PORT = config.get("db_port");
 
 module.exports = new Sequelize(DATABASE, USERNAME, PASSWORD, {
   host: HOST,
