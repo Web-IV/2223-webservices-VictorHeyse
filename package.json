@@ -10,6 +10,7 @@
     "start": "npx sequelize-cli db:migrate && npx sequelize db:seed:all && npx env-cmd nodemon src/index.js",
     "start:prod": "node src/index.js",
     "dev": "npx env-cmd nodemon src/index.js",
+    "sequelize:init": "sequelize init",
     "buildupdate": "npx sequelize-cli db:migrate && npx sequelize db:seed:all",
     "seeders": "npx sequelize db:seed:all",
     "delseeders": "npx sequelize-cli db:seed:undo:all",
