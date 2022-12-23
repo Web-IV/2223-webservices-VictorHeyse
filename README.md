@@ -12,8 +12,6 @@ Ik verwacht dat volgende software reeds geïnstalleerd is:
 - [Yarn](https://yarnpkg.com)
 - [MySQL Community Server](https://dev.mysql.com/downloads/mysql/)
 
-> Vul eventueel aan
-
 ## Opstarten
 
 Repository clonen en installeren:
@@ -38,32 +36,42 @@ Repository clonen en installeren:
 maak een file config.JSON aan in /config en geef de juiste databank info in
 (requirement voor sequelize seeders en migrations)
 
-{
-"development": {
-"username": "root",
-"password": "root",
-"database": "localhost",
-"host": "localhost",
-"dialect": "mysql",
-"port": "3306"
-},
-"test": {
-"username": "root",
-"password": "root",
-"database": "localhost",
-"host": "localhost",
-"dialect": "mysql",
-"port": "3306"
-},
-"production": {
-"username": "root",
-"password": "root",
-"database": "localhost",
-"host": "localhost",
-"dialect": "mysql",
-"port": "3306"
-}
-}
+    {
+    "development": {
+    "username": "root",
+    "password": "root",
+    "database": "localhost",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": "3306"
+    },
+    "test": {
+    "username": "root",
+    "password": "root",
+    "database": "localhost",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": "3306"
+    },
+    "production": {
+    "username": "root",
+    "password": "root",
+    "database": "localhost",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": "3306"
+    }
+    }
+
+!!!eerste keer!!! opstarten back-end (dit voert seeders en migrations uit via sequelize-CLI)
+
+    yarn start
+
+opstarten back-end na initiele opstart
+
+    yarn dev
+
+om terug van niks te beginnen: in database -> drop schema in database -> maak schema terug aan -> yarn start
 
 ## Testen
 
