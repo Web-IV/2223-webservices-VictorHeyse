@@ -1,10 +1,8 @@
-# Examenopdracht Front-end Web Development / Web Services
+# Examenopdracht Web Services
 
-> Schrap hierboven wat niet past
-
-- Student: VOORNAAM NAAM
-- Studentennummer: xxxxxxxxx
-- E-mailadres: voornaam.naam@student.hogent.be
+- Student: Victor Heyse
+- Studentennummer: 202182969
+- E-mailadres: victor.heyse@student.hogent.be
 
 ## Vereisten
 
@@ -13,15 +11,41 @@ Ik verwacht dat volgende software reeds geïnstalleerd is:
 - [NodeJS](https://nodejs.org)
 - [Yarn](https://yarnpkg.com)
 - [MySQL Community Server](https://dev.mysql.com/downloads/mysql/)
-- ...
 
 > Vul eventueel aan
 
 ## Opstarten
 
-> Schrijf hier hoe we de applicatie starten (.env bestanden aanmaken, commando's om uit te voeren...)
+Repository clonen en installeren:
 
+    git clone https://github.com/Web-IV/2223-frontendweb-victorheyse.git
+    yarn install
+
+.env file aanmaken in root met volgende variabelen:
+
+    NODE_ENV=development
+    DATABASE=localhost
+    USERNAME=root
+    PASSWORD=root
+    HOST=localhost
+    DIALECT=mysql
+    PORT=3306
+    AUTH_JWKS_URI=https://klj-activiteiten.eu.auth0.com/.well-known/jwks.json
+    AUTH_AUDIENCE=https://klj-activity.victor-hogent.be
+    AUTH_ISSUER=https://klj-activiteiten.eu.auth0.com/
+    AUTH_USER_INFO=https://klj-activiteiten.eu.auth0.com/userinfo
 
 ## Testen
 
-> Schrijf hier hoe we de testen uitvoeren (.env bestanden aanmaken, commando's om uit te voeren...)
+database informatie aanpassen in config/test.js
+
+    user: "root",
+    pswrd: "root",
+    db: "localhost",
+    host: "localhost",
+    dialect: "mysql",
+    port: "3306",
+
+test uitvoeren:
+
+    yarn test
