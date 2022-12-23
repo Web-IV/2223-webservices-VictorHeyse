@@ -1,11 +1,15 @@
 module.exports = {
   env: "NODE_ENV",
-  db: "DATABASE",
-  user: "USERNAME",
-  pswrd: "PASSWORD",
-  host: "HOST",
-  dialect: "DIALECT",
   port: "PORT",
+
+  database: {
+    db: "DATABASE",
+    user: "USERNAME",
+    pswrd: "PASSWORD",
+    host: "HOST",
+    dialect: "DIALECT",
+    port: "DATABASE_PORT",
+  },
   auth: {
     jwksUri: "AUTH_JWKS_URI",
     audience: "AUTH_AUDIENCE",
