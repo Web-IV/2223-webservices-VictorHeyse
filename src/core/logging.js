@@ -7,7 +7,6 @@ const loggerFormat = () => {
   const formatMessage = ({ level, message, timestamp, ...rest }) =>
     `${timestamp} | ${level} | ${message} | ${JSON.stringify(rest)}`;
 
-  // Errors don't have a decent toString, so we need to format them manually
   const formatError = ({ error: { stack }, ...rest }) =>
     `${formatMessage(rest)}\n\n${stack}\n`;
   const format = (info) =>
