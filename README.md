@@ -35,6 +35,36 @@ Repository clonen en installeren:
     AUTH_ISSUER=https://klj-activiteiten.eu.auth0.com/
     AUTH_USER_INFO=https://klj-activiteiten.eu.auth0.com/userinfo
 
+maak een file config.JSON aan in /config en geef de juiste databank info in
+(requirement voor sequelize seeders en migrations)
+
+{
+"development": {
+"username": "root",
+"password": "root",
+"database": "localhost",
+"host": "localhost",
+"dialect": "mysql",
+"port": "3306"
+},
+"test": {
+"username": "root",
+"password": "root",
+"database": "localhost",
+"host": "localhost",
+"dialect": "mysql",
+"port": "3306"
+},
+"production": {
+"username": "root",
+"password": "root",
+"database": "localhost",
+"host": "localhost",
+"dialect": "mysql",
+"port": "3306"
+}
+}
+
 ## Testen
 
 database informatie aanpassen in config/test.js
