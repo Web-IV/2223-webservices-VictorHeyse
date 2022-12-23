@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "182969vh",
+    "password": "f67thCAJK5M0CIx0PCvi",
+    "database": "182969vh",
+    "host": "vichogent.be",
+    "dialect": "mysql",
+    "port": 40043
+  },
+  "test": {
+    "username": "182969vh",
+    "password": "f67thCAJK5M0CIx0PCvi",
+    "database": "182969vh",
+    "host": "vichogent.be",
+    "dialect": "mysql",
+    "port": 40043
+  },
+  "production": {
+    "username": "182969vh",
+    "password": "f67thCAJK5M0CIx0PCvi",
+    "database": "182969vh",
+    "host": "vichogent.be",
+    "dialect": "mysql",
+    "port": 40043
+  }
+}
