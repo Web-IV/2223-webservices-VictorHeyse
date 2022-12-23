@@ -30,22 +30,28 @@ Als beheerder kan je ook inschrijven/uitschrijven voor activiteiten.
 ## Screenshots
 
 Homepage (niet ingelogd)
-![text](images dossier\HomeNietIngelogd.PNG)
+
+![alt text](images dossier\HomeNietIngelogd.PNG)
 
 Homepage
-![text](images dossier\Homepage.PNG)
+
+![alt text](images dossier\Homepage.PNG)
 
 Activiteitenbeheer
-![text](images dossier\Activiteitenbeheer.PNG)
+
+![alt text](images dossier\Activiteitenbeheer.PNG)
 
 Inschrijvingen
-![text](images dossier\Inschrijvingen.PNG)
+
+![alt text](images dossier\Inschrijvingen.PNG)
 
 Contact
-![text](images dossier\Contact.PNG)
+
+![alt text](images dossier\Contact.PNG)
 
 404 (naar een pagina gaan die niet bestaat)
-![text](images dossier\404.PNG)
+
+![alt text](images dossier\404.PNG)
 
 ## Behaalde minimumvereisten
 
