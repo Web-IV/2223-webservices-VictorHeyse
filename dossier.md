@@ -30,22 +30,22 @@ Als beheerder kan je ook inschrijven/uitschrijven voor activiteiten.
 ## Screenshots
 
 Homepage (niet ingelogd)
-https://imgur.com/a/HekV9Gj
+![text]https://imgur.com/a/HekV9Gj
 
 Homepage
-https://imgur.com/a/2TI5RYL
+![text]https://imgur.com/a/2TI5RYL
 
 Activiteitenbeheer
-https://imgur.com/a/T2tdVkN
+![text]https://imgur.com/a/T2tdVkN
 
 Inschrijvingen
-https://imgur.com/a/k3iG57S
+![text]https://imgur.com/a/k3iG57S
 
 Contact
-https://imgur.com/a/gYaZT2D
+![text]https://imgur.com/a/gYaZT2D
 
 404 (naar een pagina gaan die niet bestaat)
-https://imgur.com/a/Uuf9YDi
+![text]https://imgur.com/a/Uuf9YDi
 
 ## Behaalde minimumvereisten
 
