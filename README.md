@@ -16,7 +16,7 @@ Ik verwacht dat volgende software reeds geïnstalleerd is:
 
 Repository clonen en installeren:
 
-    git clone https://github.com/Web-IV/2223-frontendweb-victorheyse.git
+    git clone https://github.com/Web-IV/2223-webservices-VictorHeyse.git
     yarn install
 
 .env file aanmaken in root met volgende variabelen:
