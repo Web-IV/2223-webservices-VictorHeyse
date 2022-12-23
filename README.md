@@ -27,7 +27,7 @@ Repository clonen en installeren:
     PASSWORD=root
     HOST=localhost
     DIALECT=mysql
-    PORT=3306
+    DATABASE_PORT=3306
     AUTH_JWKS_URI=https://klj-activiteiten.eu.auth0.com/.well-known/jwks.json
     AUTH_AUDIENCE=https://klj-activity.victor-hogent.be
     AUTH_ISSUER=https://klj-activiteiten.eu.auth0.com/
@@ -67,7 +67,7 @@ maak een file config.JSON aan in /config en geef de juiste databank info in
 
     yarn start
 
-opstarten back-end na initiele opstart
+opstarten back-end na initiele opstart (Wanneer migrations en seeders door sequelize zijn uitgevoert willen we dit niet opnieuw doen, yarn start doet dit wel. Gebruik dus yarn dev!)
 
     yarn dev
 

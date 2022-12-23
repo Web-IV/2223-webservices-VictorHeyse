@@ -5,7 +5,7 @@ module.exports = {
   },
 
   cors: {
-    origins: ["https://two223-frontendweb-victorheyse.onrender.com"],
+    origins: ["http://localhost:3000"],
     maxAge: 3 * 60 * 60,
   },
   database: {

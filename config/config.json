@@ -1,26 +1,26 @@
 {
   "development": {
-    "username": "182969vh",
-    "password": "f67thCAJK5M0CIx0PCvi",
-    "database": "182969vh",
-    "host": "vichogent.be",
-    "dialect": "mysql",
-    "port": 40043
+  "username": "root",
+  "password": "root",
+  "database": "localhost",
+  "host": "localhost",
+  "dialect": "mysql",
+  "port": "3306"
   },
   "test": {
-    "username": "182969vh",
-    "password": "f67thCAJK5M0CIx0PCvi",
-    "database": "182969vh",
-    "host": "vichogent.be",
-    "dialect": "mysql",
-    "port": 40043
+  "username": "root",
+  "password": "root",
+  "database": "localhost",
+  "host": "localhost",
+  "dialect": "mysql",
+  "port": "3306"
   },
   "production": {
-    "username": "182969vh",
-    "password": "f67thCAJK5M0CIx0PCvi",
-    "database": "182969vh",
-    "host": "vichogent.be",
-    "dialect": "mysql",
-    "port": 40043
+  "username": "root",
+  "password": "root",
+  "database": "localhost",
+  "host": "localhost",
+  "dialect": "mysql",
+  "port": "3306"
   }
-}
+  }
