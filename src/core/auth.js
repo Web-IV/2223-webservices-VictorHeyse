@@ -30,9 +30,6 @@ function checkJwtToken() {
       algorithms: ["RS256"],
       passthrough: true,
     });
-    // .unless({
-    //   path: [], // whitelist urls
-    // }),
   } catch (error) {
     logger.error(error);
     throw error;

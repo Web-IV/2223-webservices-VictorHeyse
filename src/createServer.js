@@ -57,15 +57,6 @@ module.exports = async function createServer() {
 
   app.use(bodyParser());
 
-  // testing Auth0
-  // app.use(async (ctx, next) => {
-  //   const logger = getLogger();
-  //   logger.debug(ctx.headers.authorization);
-  //   logger.debug(JSON.stringify(ctx.state.user));
-  //   logger.debug(ctx.state.jwtOriginalError);
-  //   await next();
-  // });
-
   app.use(async (ctx, next) => {
     const logger = getLogger();
     logger.info(`${emoji.get("fast_forward")} ${ctx.method} ${ctx.url}`);
